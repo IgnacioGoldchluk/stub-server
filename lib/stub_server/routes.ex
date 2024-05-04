@@ -5,9 +5,12 @@ defmodule StubServer.Routes do
     quote bind_quoted: [endpoint_info: endpoint_info] do
       %{"route" => route} = endpoint_info
       query_params = Map.get(endpoint_info, "query_params", %{}) |> Macro.escape()
+      body_params = Map.get(endpoint_info, "request_body", %{}) |> Macro.escape()
       resp = Map.get(endpoint_info, "response", %{}) |> Macro.escape()
 
-      def json_response(route, p) when p == unquote(query_params), do: unquote(resp)
+      def json_response(route, q, b)
+          when q == unquote(query_params) and b == unquote(query_params),
+          do: unquote(resp)
     end
   end
 
@@ -19,11 +22,15 @@ defmodule StubServer.Routes do
 
       match route, via: method do
         conn = var!(conn) |> Plug.Conn.fetch_query_params()
-        %{request_path: path, query_params: params} = conn
+
+        %{request_path: path, query_params: params, body_params: body_params} = conn
 
         var!(conn)
         |> put_resp_content_type("application/json")
-        |> send_resp(unquote(status_code), json_response(path, params) |> Jason.encode!())
+        |> send_resp(
+          unquote(status_code),
+          json_response(path, params, body_params) |> Jason.encode!()
+        )
       end
     end
   end

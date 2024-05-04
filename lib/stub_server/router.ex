@@ -2,6 +2,13 @@ defmodule StubServer.Router do
   use Plug.Router
   import StubServer.Routes
   plug(:match)
+
+  plug(Plug.Parsers,
+    parsers: [:urlencoded, :json],
+    pass: ["text/html", "application/json"],
+    json_decoder: Jason
+  )
+
   plug(:dispatch)
 
   @external_resource server_spec = "lib/stub_server.json"
