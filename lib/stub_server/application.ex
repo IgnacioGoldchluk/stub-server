@@ -8,8 +8,7 @@ defmodule StubServer.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      # Starts a worker by calling: StubServer.Worker.start_link(arg)
-      # {StubServer.Worker, arg}
+      {Bandit, plug: StubServer.Router, port: 4135}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
