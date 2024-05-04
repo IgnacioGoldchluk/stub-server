@@ -11,6 +11,11 @@ defmodule StubServer.Router do
   |> Jason.decode!()
   |> Enum.each(&generate_route/1)
 
+  server_spec
+  |> File.read!()
+  |> Jason.decode!()
+  |> Enum.each(&generate_params_matches/1)
+
   match _ do
     send_resp(conn, :not_found, "")
   end

@@ -27,3 +27,6 @@ stub_server-*.tar
 
 # Lexical
 /.lexical/
+
+# The server config file
+lib/stub_server.json
