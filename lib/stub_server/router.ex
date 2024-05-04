@@ -9,7 +9,7 @@ defmodule StubServer.Router do
   server_spec
   |> File.read!()
   |> Jason.decode!()
-  |> Enum.each(fn endpoint -> generate(endpoint) end)
+  |> Enum.each(&generate_route/1)
 
   match _ do
     send_resp(conn, :not_found, "")
