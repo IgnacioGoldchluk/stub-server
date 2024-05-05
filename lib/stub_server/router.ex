@@ -11,7 +11,7 @@ defmodule StubServer.Router do
 
   plug(:dispatch)
 
-  @external_resource server_spec = "lib/stub_server.json"
+  @external_resource server_spec = "lib/server_config/config.json"
 
   server_spec
   |> File.read!()

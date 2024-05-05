@@ -22,6 +22,7 @@ defmodule StubServer.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:exsync, "~> 0.4"},
       {:jason, "~> 1.4"},
       {:plug, "~> 1.15"},
       {:bandit, "~> 1.0.0"}
