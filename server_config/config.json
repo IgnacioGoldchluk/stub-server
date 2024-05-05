@@ -1,0 +1,9 @@
+[
+  {
+    "route": "/base",
+    "status_code": 200,
+    "response": {
+      "hello": "earth"
+    }
+  }
+]

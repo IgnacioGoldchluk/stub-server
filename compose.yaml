@@ -1,0 +1,11 @@
+services:
+  stub-server:
+    image: stub-server:latest
+    restart: always
+    container_name: stub-server
+    volumes:
+      - ./server_config:/app/lib/server_config/
+    ports:
+      - 4135:4135
+volumes:
+  server_config:
