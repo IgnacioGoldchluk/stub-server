@@ -1,0 +1,42 @@
+[
+  {
+    "route": "/empty-response",
+    "status_code": 200
+  },
+  {
+    "route": "/base",
+    "status_code": 200,
+    "response": {
+      "hello": "world"
+    }
+  },
+  {
+    "route": "/with/query-params",
+    "status_code": 200,
+    "query_params": {
+      "world": "true"
+    },
+    "response": {
+      "bye": "people"
+    }
+  },
+  {
+    "route": "/with/request-body",
+    "status_code": 204,
+    "method": "delete",
+    "request_body": {
+      "id": 2
+    }
+  },
+  {
+    "route": "/base",
+    "method": "post",
+    "status_code": 201,
+    "response": {
+      "data": {
+        "id": 1,
+        "why": "same route"
+      }
+    }
+  }
+]
