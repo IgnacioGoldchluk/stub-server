@@ -1,6 +1,6 @@
 services:
   stub-server:
-    image: stub-server:latest
+    image: igsomething/stub_server:latest
     restart: always
     container_name: stub-server
     volumes:
