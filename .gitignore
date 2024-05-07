@@ -30,3 +30,6 @@ stub_server-*.tar
 
 # The server config file
 lib/stub_server.json
+
+# Env variables
+.env
